@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Expense;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -9,16 +10,13 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class ExpenseFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Expense::class;
+    
     public function definition(): array
     {
         return [
-            'nama' => $this->faker->name(),
-            'harga' => $this->faker->randomFloat(3, 0, 1000),
+            'name' => $this->faker->name(),
+            'price' => $this->faker->randomFloat(3, 0, 1000),
         ];
     }
 }
