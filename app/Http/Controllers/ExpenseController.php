@@ -12,4 +12,9 @@ class ExpenseController extends Controller
         $expenses = Expense::paginate(10);
         return view ('index', compact('expenses'));
     }
+
+    public function store()
+    {
+        
+    }
 }

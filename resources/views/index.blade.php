@@ -5,6 +5,8 @@
         </h2>
     </x-slot>
 
+    
+
     <div class="py-12 bg-gradient-to-r from-indigo-600 to-pink-500">
         <div class="py-0 max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-x-auto shadow-md sm:rounded-lg mb-4">
@@ -22,7 +24,7 @@
                         <tr class="bbg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <td scope="row"class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$expense ->name}}
                             </td>
-                            <td scope="row"class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$expense ->price}}
+                            <td scope="row"class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">RP.{{$expense ->price}}
                             </td>
                         </tr>
                         @endforeach
