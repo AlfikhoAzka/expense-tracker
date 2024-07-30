@@ -7,11 +7,11 @@
 
     <div class="py-12 bg-gradient-to-r from-indigo-600 to-pink-500">
         <div class="py-0 max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-gradient-to-r from-indigo-600 to-pink-500 overflow-x-auto shadow-md sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 overflow-x-auto shadow-md sm:rounded-lg mb-4">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-6 py-3">Name
+                            <th scope="col" class="px-6 py-3 w-2/4">Name
                             </th>
                             <th scope="col" class="px-6 py-3">Price
                             </th>
@@ -29,6 +29,7 @@
                     </tbody>
                 </table>
             </div>
+            {{ $expenses->links() }}
         </div>
     </div>
 </x-app-layout>
