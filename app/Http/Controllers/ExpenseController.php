@@ -21,6 +21,12 @@ class ExpenseController extends Controller
         ]);
         $expense = Expense::create(request()->all());
         
-        return redirect()->route('index')->with('success', 'Product created successfully.');;
+        return redirect()->route('index')->with('success', 'Expense created successfully.');;
+    }
+
+    public function destroy(Expense $expense)
+    {
+        $expense->delete();
+        return redirect()->route('index')->with('success', 'Expense deleted successfully.');
     }
 }

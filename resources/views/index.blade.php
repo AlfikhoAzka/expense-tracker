@@ -17,7 +17,12 @@
                         <tr>
                             <th scope="col" class="px-6 py-3 w-2/4">Name
                             </th>
-                            <th scope="col" class="px-6 py-3">Price
+                            <th scope="col" class="px-6 py-3 w-2/4">Price
+                            </th>
+                            <th scope="col" class="px-6 py-3 ">Created at
+                            </th>
+                            <th
+                                scope="col" class="px-6 py-3 ">Action
                             </th>
                         </tr>
                     </thead>
@@ -28,6 +33,16 @@
                             </td>
                             <td scope="row"class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">RP.{{$expense ->price}}
                             </td>
+                            <td scope="row"class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$expense ->created_at}}
+                            </td>
+                            <td class="px-6">
+                                <div>
+                                    <form method="POST" action="{{ route('destroy', $expense->id ) }}">
+                                        @csrf
+                                        @method('DELETE')
+                                        
+                                        <button type="submit" class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Delete</button>
+                                </div>
                         </tr>
                         @endforeach
                     </tbody>
