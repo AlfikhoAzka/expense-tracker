@@ -31,7 +31,7 @@
                         <tr class="bbg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <td scope="row"class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$expense ->name}}
                             </td>
-                            <td scope="row"class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">RP.{{$expense ->price}}
+                            <td scope="row"class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">Rp,{{$expense ->price}}
                             </td>
                             <td scope="row"class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$expense ->created_at}}
                             </td>
