@@ -8,7 +8,17 @@ class ExpenseController extends Controller
 {
     public function index()
     {
-        $expenses = Expense::paginate(10);
+        $expenses = Expense::orderBy('created_at', 'desc')
+        ->paginate(10);
+        return view ('expenses.index', compact('expenses'));
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $expenses = Expense::where('name', 'like', '%' . $search . '%')
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
         return view ('expenses.index', compact('expenses'));
     }
     public function create(expense $expense)
