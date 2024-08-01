@@ -6,7 +6,7 @@
     </x-slot>
 
     <div class="py-0 max-w-7xl mx-auto sm:px-6 lg:px-8">    
-        <a href="/create" class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Add Expense</a>
+        <a href="{{ route ('expenses.create') }}" class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Add Expense</a>
     </div>
 
     <div class="py-12 bg-gradient-to-r from-indigo-600 to-pink-500">
@@ -37,11 +37,10 @@
                             </td>
                             <td class="px-6">
                                 <div>
-                                    <form method="POST" action="{{ route('destroy', $expense->id ) }}">
+                                    <form method="POST" action="{{ route('expenses.destroy', $expense->id ) }};">
                                         @csrf
                                         @method('DELETE')
-                                        
-                                        <button type="submit" class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Delete</button>
+                                        <button type="submit" onclick="return confirm('Are you sure?')" class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Delete</button>
                                 </div>
                         </tr>
                         @endforeach

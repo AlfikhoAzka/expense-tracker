@@ -24,13 +24,10 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
+    Route::resource('expenses', ExpenseController::class);
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('expenses', [ExpenseController::class, 'index'])->name('expenses');
-    Route::get('create', [ExpenseController::class, 'create'])->name('create');
-    Route::post('expenses', [ExpenseController::class, 'store'])->name('index');
-    Route::delete('expenses', [ExpenseController::class, 'destroy'])->name('destroy');
 });
 
 require __DIR__.'/auth.php';
