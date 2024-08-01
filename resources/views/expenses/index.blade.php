@@ -37,7 +37,7 @@
                             </td>
                             <td class="px-6">
                                 <div>
-                                    <a href="action="{{ route('expenses.edit', $expense->id ) }}" class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Edit</a>
+                                    <a href="{{ route('expenses.edit', $expense->id ) }}" class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Edit</a>
                                     <form action="{{ route('expenses.destroy', $expense->id ) }} "method="POST" >
                                         @csrf
                                         @method('DELETE')
