@@ -8,9 +8,10 @@
     <div class="py-12 bg-gradient-to-r from-indigo-600 to-pink-500">
         <div class="py-0 max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-x-auto shadow-md sm:rounded-lg mb-4">
-                <form method="POST" action="{{ route('expenses.index', $expense->id) }}">
+                <form method="POST" action="{{ route('expenses.update', $expense->id) }}">
                     @csrf
                     @method('PUT')
+
                     <div class="p-6 bg-white dark:bg-gray-800 space-y-6">
                         <div class="grid grid-cols-1">
                             <div>
