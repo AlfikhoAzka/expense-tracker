@@ -26,6 +26,21 @@ class ExpenseController extends Controller
         return redirect()->route('expenses.index')->with('success', 'Expense created successfully.');;
     }
 
+    public function edit(Expense $expense)
+    {
+        return view ('expenses.edit', compact('expense'));
+    }
+    public function update(Request $request, Expense $expense)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric',
+        ]);
+        $expense->update($request->all());
+        
+        return redirect()->route('expenses.index')->with('success', 'Expense updated successfully.');
+    }
+
     public function destroy(Expense $expense)
     {
         $expense->delete();
