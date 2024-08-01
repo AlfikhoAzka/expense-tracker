@@ -37,11 +37,13 @@
                             </td>
                             <td class="px-6">
                                 <div>
-                                    <form method="POST" action="{{ route('expenses.destroy', $expense->id ) }};">
+                                    <form action="{{ route('expenses.destroy', $expense->id ) }} "method="POST" >
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" onclick="return confirm('Are you sure?')" class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Delete</button>
+                                    </form>
                                 </div>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
