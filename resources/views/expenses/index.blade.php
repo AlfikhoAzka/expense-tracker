@@ -36,7 +36,7 @@
                             <td scope="row"class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">{{$expense ->created_at}}
                             </td>
                             <td class="px-6">
-                                <div>
+                                <div class="flex space-x-2">
                                     <a href="{{ route('expenses.edit', $expense->id ) }}" class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Edit</a>
                                     <form action="{{ route('expenses.destroy', $expense->id ) }} "method="POST" >
                                         @csrf
