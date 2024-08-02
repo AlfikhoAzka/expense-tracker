@@ -10,18 +10,9 @@ class ExpenseController extends Controller
 {
     public function index(Request $request)
     {
-        $expenses = Expense::paginate(10);
-        return view ('expenses.index', compact('expenses'));
-    }
-
-    public function search(Request $request)
-    {
-        $expenses = Expense::where('name', 1)
-                         ->orderBy('name')
-                         ->take(10)
-                         ->get();
-
-        return view('flights.index', compact('flights'));
+        $search = $request->input('search');
+        $expenses = Expense::search($search)->paginate(10)->withQueryString();
+        return view('expenses.index', compact('expenses'));
     }
     public function create(expense $expense)
     {
