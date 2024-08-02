@@ -21,7 +21,7 @@ class Expense extends Model
 
         return $query->where(function ($query) use ($search) {
             $query
-                ->where('name', 'LIKE', "$search");
+                ->where('name', 'LIKE', "%$search%");
         });
     }
 }
