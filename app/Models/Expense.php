@@ -14,8 +14,15 @@ class Expense extends Model
         'price',
     ];
 
-    public function scopeFilter (Builder $query): void
+    public function scopeSearch($query, $search)
     {
-        $query->where('name', 'like', '%' . request('search') . '%');
+        if (!$search) {
+            return $query;
+        }
+
+        return $query->where(function ($query) use ($search) {
+            $query
+                ->where('name', 'LIKE', "%$search%");
+        });
     }
 }
