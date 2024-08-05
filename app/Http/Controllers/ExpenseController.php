@@ -11,7 +11,17 @@ class ExpenseController extends Controller
     public function index(Request $request)
     {
         $search = $request->input('search');
+        $date = $request->input('date');
+
         $expenses = Expense::search($search)->paginate(10)->withQueryString();
+        return view('expenses.index', compact('expenses'));
+    }
+
+    public function filter(Request $request)
+    {
+        $start_date = $request->input('start_date');
+        $end_date = $request->input('end_date');
+        $expenses = Expense::whereDate($start_date, $end_date)->paginate(10)->withQueryString();
         return view('expenses.index', compact('expenses'));
     }
     public function create(expense $expense)
@@ -26,7 +36,7 @@ class ExpenseController extends Controller
         ]);
         $expense = Expense::create(request()->all());
 
-        return redirect()->route('expenses.index')->with('success', 'Expense created successfully.');;
+        return redirect()->route('expenses.index')->with('success', 'Expense created successfully.');
     }
 
     public function edit(Expense $expense)
