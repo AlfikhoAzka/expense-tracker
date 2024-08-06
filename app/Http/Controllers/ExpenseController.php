@@ -13,7 +13,6 @@ class ExpenseController extends Controller
         $search = $request->input('search');
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
-        
 
         $expenses = Expense::search($search)
         ->when($start_date, function ($query, string $start_date){
