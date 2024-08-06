@@ -22,8 +22,6 @@ class ExpenseController extends Controller
             $query->where('created_at', '<', $end_date);
         })
             ->orderBy('created_at', 'desc')
-            ->orderBy('name', 'asc')
-            ->orderBy('price', 'desc')
             ->paginate(10)
             ->withQueryString();
         return view('expenses.index', compact('expenses'));
