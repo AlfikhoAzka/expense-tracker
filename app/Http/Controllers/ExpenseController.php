@@ -14,7 +14,8 @@ class ExpenseController extends Controller
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
 
-        $expenses = Expense::search($search)->when($start_date, function ($query, string $start_date){
+        $expenses = Expense::search($search)
+        ->when($start_date, function ($query, string $start_date){
             $query->where('created_at', '>', $start_date);
         })
         ->when($end_date, function ($query, string $end_date){
