@@ -14,7 +14,7 @@ class ExpenseController extends Controller
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
         $sortBy = $request->query('sort_by', 'created_at');
-        $sortOrder = $request->query('sort_order', 'asc');
+        $sortOrder = $request->query('sort_order', 'desc');
 
         $expenses = Expense::search($search)
         ->when($start_date, function ($query, string $start_date){
