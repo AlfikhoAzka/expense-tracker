@@ -52,6 +52,7 @@
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3 w-2/4">
+                                <a href="{{ request()->fullUrlWithQuery(['sort_by' => request()->input('sort_order') === 'name' ? 'name' : 'name']) }}">
                                 <div class="flex items-center">
                                     Name
                                     <svg class="w-4 h-4 ms-1 ml-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -60,6 +61,7 @@
                                 </div>
                             </th>
                             <th scope="col" class="px-6 py-3 w-2/4">
+                                <a href="{{ request()->fullUrlWithQuery(['sort_by' => request()->input('sort_order') === 'price' ? 'price' : 'price']) }}">
                                 <div class="flex items-center">
                                     Price
                                     <svg class="w-4 h-4 ms-1 ml-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -68,6 +70,7 @@
                                 </div>
                             </th>
                             <th scope="col" class="px-6 py-3">
+                                <a href="{{ request()->fullUrlWithQuery(['sort_by' => request()->input('sort_order') === 'price' ? 'price' : 'price']) }}">
                                 <div class="flex items-center">
                                     Created at
                                     <svg class="w-4 h-4 ms-1 ml-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
