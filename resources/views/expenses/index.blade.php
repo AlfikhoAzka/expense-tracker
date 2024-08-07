@@ -70,7 +70,7 @@
                                 </div>
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                <a href="{{ request()->fullUrlWithQuery(['sort_by' => request()->input('sort_order') === 'price' ? 'price' : 'price']) }}">
+                                <a href="{{ request()->fullUrlWithQuery(['sort_by' => request()->input('sort_order') === 'created_at' ? 'created_at' : 'created_at']) }}">
                                 <div class="flex items-center">
                                     Created at
                                     <svg class="w-4 h-4 ms-1 ml-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
