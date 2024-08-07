@@ -46,20 +46,16 @@
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-6 py-3 w-2/4">
-                                <a href="{{ request()->fullUrlWithQuery(['sort_by' => request()->query('sort_order') === 'name' ? 'name-desc' : 'name']) }}">
+                                <a href="{{ request()->fullUrlWithQuery(['sort_by' => request()->input('sort_order') === 'name-asc' ? '-name-desc' : 'name']) }}"></a>
                                 <div class="flex items-center">
                                     Name
-                                    @if (request()->query('sort_order') === 'name')
-                                    @elseif (request()->query('sort_order') === 'name-desc')
-                                    @else
                                     <svg class="w-4 h-4 ms-1 ml-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
                                     </svg>
-                                    @endif
                                 </div>
                             </th>
                             <th scope="col" class="px-6 py-3 w-2/4">
-                                <a href="{{ request()->fullUrlWithQuery(['sort_by' => request()->query('sort_order') === 'price' ? 'price' : 'price']) }}">
+                                <a href="{{ request()->fullUrlWithQuery(['sort_by' => request()->query('sort_order') === 'price' ? '-price' : 'price']) }}"></a>
                                 <div class="flex items-center">
                                     Price
                                     <svg class="w-4 h-4 ms-1 ml-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -68,7 +64,7 @@
                                 </div>
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                <a href="{{ request()->fullUrlWithQuery(['sort_by' => request()->query('sort_order') === 'created_at' ? 'created_at' : 'created_at']) }}">
+                                <a href="{{ request()->fullUrlWithQuery(['sort_by' => request()->query('sort_order') === 'created_at' ? '-created_at' : 'created_at']) }}"></a>
                                 <div class="flex items-center">
                                     Created at
                                     <svg class="w-4 h-4 ms-1 ml-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
