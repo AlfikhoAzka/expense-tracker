@@ -57,9 +57,10 @@
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
                                     </svg>
                                 </div>
+                                 </a>
                             </th>
                             <th scope="col" class="px-6 py-3 w-2/4">
-                                <a href="{{ request()->fullUrlWithQuery(['sort_by' => request()->query('sort_order') === 'price' ? '-price' : 'price']) }}">
+                                <a href="{{ route('expenses.index', ['sort_by' => 'price', 'sort_order' => request('sort_order') === 'asc' ? 'desc' : 'asc']) }}">
                                 <div class="flex items-center">
                                     Price
                                     @if (request('sort_by') === 'price' && request('sort_order') === 'asc')
@@ -70,15 +71,21 @@
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
                                     </svg>
                                 </div>
+                                </a>
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                <a href="{{ request()->fullUrlWithQuery(['sort_by' => request()->query('sort_order') === 'created_at' ? '-created_at' : 'created_at']) }}">
+                                <a href="{{ route('expenses.index', ['sort_by' => 'created_at', 'sort_order' => request('sort_order') === 'asc' ? 'desc' : 'asc']) }}">
                                 <div class="flex items-center">
                                     Created at
+                                    @if (request('sort_by') === 'created_at' && request('sort_order') === 'asc')
+                                    @elseif (request('sort_by') === 'created_at' && request('sort_order') === 'desc')
+                                    @else
+                                    @endif
                                     <svg class="w-4 h-4 ms-1 ml-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4"/>
                                     </svg>
                                 </div>
+                                </a>
                             </th>
                             <th scope="col" class="px-6 py-3">
                                 Action
