@@ -2,11 +2,10 @@
 
 namespace App\Models;
 
-use Attribute;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
-use function Pest\Laravel\get;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Expense extends Model
 {
@@ -28,8 +27,10 @@ class Expense extends Model
         });
     }
 
-    protected function getPriceAttribute($value)
+    protected function Price(): Attribute
     {
-        return 'Rp.' . number_format($value, 3, '.', ',');
+        return new Attribute(
+            get: fn ($value) => 'Rp.' . number_format($value, 3, '.', ''),
+        );
     }
 }
