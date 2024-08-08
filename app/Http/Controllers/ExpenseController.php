@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Expense;
-use Illuminate\Support\Facades\Log;
 
 class ExpenseController extends Controller
 {
