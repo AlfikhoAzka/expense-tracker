@@ -1,4 +1,7 @@
 <x-app-layout>
+    <div class="pt-10 max-w-7xl mx-auto sm:px-6 lg:px-8">    
+        <a href="categories/create" class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Add Category</a>
+    </div>
     <div class="py-12 bg-gradient-to-r from-indigo-600 to-pink-500">
         <div class="py-0 max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-x-auto shadow-md sm:rounded-lg mb-4">
