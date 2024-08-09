@@ -10,7 +10,7 @@
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="px-6 py-3 w-3/4">Category
+                            <th scope="col" class="px-6 py-3 w-full">Category
                             </th>
                             <th scope="col" class="px-6 py-3">Actions
                             </th>
@@ -23,7 +23,7 @@
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{$category->name}}
                             </td>
-                            <td class="px-6">
+                            <td class="px-9">
                                 <div class="flex space-x-2">
                                     <a href="{{ route('categories.edit', $category->id ) }}"
                                         class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Edit</a>
