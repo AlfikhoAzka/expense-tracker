@@ -12,7 +12,7 @@
                         <tr>
                             <th scope="col" class="px-6 py-3 w-3/4">Category
                             </th>
-                            <th scope="col" class="px-6 py-3 w-2/4">Actions
+                            <th scope="col" class="px-6 py-3">Actions
                             </th>
                         </tr>
                     </thead>
