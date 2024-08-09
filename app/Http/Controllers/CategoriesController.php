@@ -12,4 +12,9 @@ class CategoriesController extends Controller
         $categories = Categories::paginate(10);
         return view('categories.index', compact('categories'));
     }
+
+    public function create()
+    {
+        return view('categories.create');
+    }
 }
