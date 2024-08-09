@@ -29,7 +29,7 @@ class Expense extends Model
     public function PriceFormatted(): Attribute
     {
         return new Attribute(
-            get: fn ($value) => 'Rp ' . number_format($value, 3, ',', '.'),
+            get: fn () => 'Rp ' . number_format($this->price, 3, ',', '.'),
         );
     }
 }
