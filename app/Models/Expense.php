@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Expense extends Model
@@ -27,10 +26,10 @@ class Expense extends Model
         });
     }
 
-    protected function Price(): Attribute
+    public function PriceFormatted(): Attribute
     {
         return new Attribute(
-            get: fn ($value) => 'Rp.' . number_format($value, 3, '.', ''),
+            get: fn ($value) => 'Rp ' . number_format($value, 3, ',', '.'),
         );
     }
 }
