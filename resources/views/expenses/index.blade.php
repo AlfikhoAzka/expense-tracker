@@ -89,7 +89,7 @@
                             </th>
                             <th scope="col" class="px-6 py-3 w-2/4">
                                 <a
-                                    href="{{ route('expenses.index', ['sort_by' => 'name', 'sort_order' => request('sort_order') === 'asc' ? 'desc' : 'asc']) }}">
+                                    href="{{ route('expenses.index', ['sort_by' => 'category', 'sort_order' => request('sort_order') === 'asc' ? 'desc' : 'asc']) }}">
                                     <div class="flex items-center">
                                         Category
                                         @if (request('sort_by') === 'category' && request('sort_order') === 'asc')
