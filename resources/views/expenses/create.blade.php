@@ -15,8 +15,16 @@
                         <div class="grid grid-cols-1">
                             <div>
                                 <x-input-label for="name" :value="__('Name')" />
-                                <x-text-input id="name" name="name" type="text" class=" mt-1 block w-full" required autocomplete="name"/>
+                                <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" required autocomplete="name"/>
                                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
+
+                                <x-input-label for="categories" :value="__('Choose Category')" />
+                                <select id="categories" name="category_id" class="mt-1 block w-full" required autocomplete="selection">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                                <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
                             
                                 <x-input-label for="price" :value="__('Price')" />
                                 <x-text-input id="price" name="price" type="text" class="mt-1 block w-full" required autocomplete="price"/>
@@ -25,10 +33,12 @@
 
                             <div class="flex justify-between items-center mt-4">
                                 <a href="/expenses" class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Cancel</a>
-                            <button type="submit" class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Add</button>
+                                <button type="submit" class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Add</button>
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
 </x-app-layout>
