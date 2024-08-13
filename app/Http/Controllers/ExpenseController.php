@@ -38,6 +38,7 @@ class ExpenseController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'category_id' => 'required',
             'price' => 'required|numeric',
         ]);
         $expense = Expense::create(request()->all());
