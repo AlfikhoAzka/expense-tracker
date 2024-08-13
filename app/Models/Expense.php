@@ -32,4 +32,9 @@ class Expense extends Model
             get: fn () => 'Rp ' . number_format($this->price, 3, ',', '.'),
         );
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Categories::class);
+    }
 }
