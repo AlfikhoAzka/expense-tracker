@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Expense;
+use App\Models\Categories;
 
 class ExpenseController extends Controller
 {
@@ -27,9 +28,11 @@ class ExpenseController extends Controller
             ->withQueryString();
         return view('expenses.index', compact('expenses'));
     }
-    public function create(expense $expense)
+    public function create(expense $expense, Categories $categories)
     {
-        return view('expenses.create', compact('expense'));
+
+        $categories = Categories::all();
+        return view('expenses.create', compact('expense', 'categories'));
     }
     public function store(Request $request)
     {
