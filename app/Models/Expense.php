@@ -11,6 +11,7 @@ class Expense extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'category_id',
         'price',
     ];
 
@@ -33,7 +34,7 @@ class Expense extends Model
         );
     }
 
-    public function category()
+    public function categories()
     {
         return $this->belongsTo(Categories::class);
     }
