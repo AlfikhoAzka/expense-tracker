@@ -19,8 +19,8 @@
                                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
 
                                 <x-input-label for="category" :value="__('Choose Category')" />
-                                <select id="categories" name="category_id" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" required autocomplete="selection">
-                                        <option disabled value="">Choose Category</option>
+                                <select id="categories" name="category_id" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" autocomplete="selection">
+                                        <option value="">Choose Category</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->category }}</option>
                                     @endforeach

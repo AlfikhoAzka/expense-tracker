@@ -54,6 +54,8 @@
                             placeholder="End date..." type="datetime-local" id="end_date" name="end_date"
                             value="{{ request('end_date') }}">
                     </div>
+
+                    
                     <div>
                         <button type="submit"
                             class="py-3 px-5 w-full text-sm font-medium text-center text-white rounded-lg border cursor-pointer bg-primary-700 border-primary-600 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Search</button>
@@ -156,7 +158,7 @@
                             </td>
                             <td scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{$expense->category->category}}
+                                {{$expense->category->category ?? '-'}}
                             </td>
                             <td scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
