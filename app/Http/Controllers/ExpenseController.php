@@ -16,9 +16,8 @@ class ExpenseController extends Controller
         $sortBy = $request->query('sort_by', 'created_at');
         $sortOrder = $request->query('sort_order', 'desc');
 
-        $expenses = Expense::with('categories')->get();
-
-        $expenses = Expense::search($search)
+        $expenses = Expense::with('category')
+        ->search($search)
         ->when($start_date, function ($query, string $start_date){
             $query->where('created_at', '>', $start_date);
         })
