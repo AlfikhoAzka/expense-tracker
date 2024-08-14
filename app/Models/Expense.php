@@ -34,7 +34,7 @@ class Expense extends Model
         );
     }
 
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(Categories::class);
     }
