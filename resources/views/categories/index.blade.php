@@ -21,7 +21,7 @@
                         <tr class="bbg-white border-b dark:bg-gray-800 dark:border-gray-700">
                             <td scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{$category->name}}
+                                {{$category->category}}
                             </td>
                             <td class="px-9">
                                 <div class="flex space-x-2">
