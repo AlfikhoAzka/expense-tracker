@@ -16,6 +16,8 @@ class ExpenseController extends Controller
         $sortBy = $request->query('sort_by', 'created_at');
         $sortOrder = $request->query('sort_order', 'desc');
 
+        $expenses = Expense::with('categories')->get();
+
         $expenses = Expense::search($search)
         ->when($start_date, function ($query, string $start_date){
             $query->where('created_at', '>', $start_date);
@@ -34,7 +36,7 @@ class ExpenseController extends Controller
         $categories = Categories::all();
         return view('expenses.create', compact('expense', 'categories'));
     }
-    public function store(Request $request,)
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:255',
