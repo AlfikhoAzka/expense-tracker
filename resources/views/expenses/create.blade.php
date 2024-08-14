@@ -11,7 +11,7 @@
                 <form method="POST" action="{{ route('expenses.index') }}">
                     @csrf
                     
-                    <div class="p-6 bg-white dark:bg-gray-800 space-y-6">
+                    <div class="p-6 bg-gray-800 dark:bg-gray-800 space-y-6">
                         <div class="grid grid-cols-1">
                             <div>
                                 <x-input-label for="name" :value="__('Name')" />
@@ -19,7 +19,7 @@
                                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
 
                                 <x-input-label for="categories" :value="__('Choose Category')" />
-                                <select id="categories" name="category_id" class="mt-1 block w-full" required autocomplete="selection">
+                                <select id="categories" name="category_id" class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" required autocomplete="selection">
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
