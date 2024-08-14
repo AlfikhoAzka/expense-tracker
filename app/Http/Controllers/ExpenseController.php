@@ -34,7 +34,7 @@ class ExpenseController extends Controller
         $categories = Categories::all();
         return view('expenses.create', compact('expense', 'categories'));
     }
-    public function store(Request $request)
+    public function store(Request $request,)
     {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -46,14 +46,16 @@ class ExpenseController extends Controller
         return redirect()->route('expenses.index')->with('success', 'Expense created successfully.');
     }
 
-    public function edit(Expense $expense)
+    public function edit(Expense $expense, Categories $categories)
     {
-        return view('expenses.edit', compact('expense'));
+        $categories = Categories::all();
+        return view('expenses.edit', compact('expense', 'categories'));
     }
     public function update(Request $request, Expense $expense)
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'category_id' => 'required',
             'price' => 'required|numeric',
         ]);
         $expense->update($request->all());
