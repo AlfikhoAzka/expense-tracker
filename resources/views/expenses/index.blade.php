@@ -107,11 +107,11 @@
                             </th>
                             <th scope="col" class="px-6 py-3 w-2/4">
                                 <a
-                                    href="{{ route('expenses.index', ['sort_by' => 'category', 'sort_order' => request('sort_order') === 'asc' ? 'desc' : 'asc']) }}">
+                                    href="{{ route('expenses.index', ['sort_by' => 'category_id', 'sort_order' => request('sort_order') === 'asc' ? 'desc' : 'asc']) }}">
                                     <div class="flex items-center">
                                         Category
-                                        @if (request('sort_by') === 'category' && request('sort_order') === 'asc')
-                                        @elseif (request('sort_by') === 'category' && request('sort_order') === 'desc')
+                                        @if (request('sort_by') === 'category_id' && request('sort_order') === 'asc')
+                                        @elseif (request('sort_by') === 'category_id' && request('sort_order') === 'desc')
                                         @else
                                         @endif
                                         <svg class="w-4 h-4 ms-1 ml-1" aria-hidden="true"
