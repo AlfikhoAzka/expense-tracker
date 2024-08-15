@@ -10,6 +10,7 @@ class ExpenseController extends Controller
 {
     public function index(Request $request)
     {
+        $filter = $request->query('filter', 'all');
         $search = $request->input('search');
         $start_date = $request->input('start_date');
         $end_date = $request->input('end_date');
@@ -25,9 +26,12 @@ class ExpenseController extends Controller
         ->when($end_date, function ($query, string $end_date){
             $query->where('created_at', '<', $end_date);
         })
-        ->when($request->has('category_id'), function ($query, $categories) {
-            $query->where('category_id', $categories);
-        })
+        ->when($request->has('category_id'), function ($query) use ($request) {
+            $query->withWhereHas('category', function ($query) use ($request) {
+                $categories = explode (',', $request->input('category_id'));
+                $query->whereIn('id', $categories);
+            });
+        })  
             ->orderBy($sortBy, $sortOrder)
             ->paginate(10)
             ->withQueryString();
