@@ -15,6 +15,7 @@ class ExpenseController extends Controller
         $end_date = $request->input('end_date');
         $sortBy = $request->query('sort_by', 'created_at');
         $sortOrder = $request->query('sort_order', 'desc');
+        $categories = Categories::all();
 
         $expenses = Expense::with('category')
         ->search($search)
@@ -24,10 +25,13 @@ class ExpenseController extends Controller
         ->when($end_date, function ($query, string $end_date){
             $query->where('created_at', '<', $end_date);
         })
+        ->when($request->has('category_id'), function ($query, $categories) {
+            $query->where('category_id', $categories);
+        })
             ->orderBy($sortBy, $sortOrder)
             ->paginate(10)
             ->withQueryString();
-        return view('expenses.index', compact('expenses'));
+        return view('expenses.index', compact('expenses', 'categories'));
     }
     public function create(expense $expense, Categories $categories)
     {
