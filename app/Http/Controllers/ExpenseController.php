@@ -26,7 +26,7 @@ class ExpenseController extends Controller
         ->when($end_date, function ($query, string $end_date){
             $query->where('created_at', '<', $end_date);
         })
-        ->when($request->has('category_id'), function ($query) use ($request) {
+        ->when($request->filled('category_id'), function ($query) use ($request) {
             $query->withWhereHas('category', function ($query) use ($request) {
                 $categories = explode (',', $request->input('category_id'));
                 $query->whereIn('id', $categories);
