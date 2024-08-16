@@ -203,5 +203,8 @@
             </div>
             {{ $expenses->links() }}
         </div>
+        <div class="text-white flex justify-center">
+        <h2>Total Price: {{ $totalPrice }}</h2>
+        </div>
     </div>
 </x-app-layout>
