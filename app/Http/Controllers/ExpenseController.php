@@ -36,7 +36,7 @@ class ExpenseController extends Controller
             ->orderBy($sortBy, $sortOrder)
             ->paginate(10)
             ->withQueryString();
-            $totalExpense = 'Rp ' . number_format($expenses->sum('price'), 3, ',', '.');
+            $totalExpense = 'Rp ' . number_format($expenses->sum('price'), 2, ',', '.');
 
         return view('expenses.index', compact('expenses', 'categories', 'totalExpense'));
     }
