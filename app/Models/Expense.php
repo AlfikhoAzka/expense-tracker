@@ -38,4 +38,8 @@ class Expense extends Model
     {
         return $this->belongsTo(Categories::class);
     }
+
+    protected $casts = [
+        'price' => 'decimal:0',
+    ];
 }
