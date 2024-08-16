@@ -31,11 +31,14 @@ class ExpenseController extends Controller
                 $categories = explode (',', $request->input('category_id'));
                 $query->whereIn('id', $categories);
             });
-        })  
+        })
+        
             ->orderBy($sortBy, $sortOrder)
             ->paginate(10)
             ->withQueryString();
-        return view('expenses.index', compact('expenses', 'categories'));
+            $totalPrice = 'Rp ' . number_format($expenses->sum('price'), 3, ',', '.');
+
+        return view('expenses.index', compact('expenses', 'categories', 'totalPrice'));
     }
     public function create(expense $expense, Categories $categories)
     {
