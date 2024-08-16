@@ -9,37 +9,39 @@ use App\Models\Categories;
 class ExpenseController extends Controller
 {
     public function index(Request $request)
-    {
-        $filter = $request->query('filter', 'all');
-        $search = $request->input('search');
-        $start_date = $request->input('start_date');
-        $end_date = $request->input('end_date');
-        $sortBy = $request->query('sort_by', 'created_at');
-        $sortOrder = $request->query('sort_order', 'desc');
-        $categories = Categories::all();
+{
+    $filter = $request->query('filter', 'all');
+    $search = $request->input('search');
+    $start_date = $request->input('start_date');
+    $end_date = $request->input('end_date');
+    $sortBy = $request->query('sort_by', 'created_at');
+    $sortOrder = $request->query('sort_order', 'desc');
+    $categories = Categories::all();
 
-        $expenses = Expense::with('category')
+    $expensesFilter = Expense::with('category')
         ->search($search)
-        ->when($start_date, function ($query, string $start_date){
+        ->when($start_date, function ($query, string $start_date) {
             $query->where('created_at', '>', $start_date);
         })
-        ->when($end_date, function ($query, string $end_date){
+        ->when($end_date, function ($query, string $end_date) {
             $query->where('created_at', '<', $end_date);
         })
         ->when($request->filled('category_id'), function ($query) use ($request) {
             $query->withWhereHas('category', function ($query) use ($request) {
-                $categories = explode (',', $request->input('category_id'));
+                $categories = explode(',', $request->input('category_id'));
                 $query->whereIn('id', $categories);
             });
-        })
-        
-            ->orderBy($sortBy, $sortOrder)
-            ->paginate(10)
-            ->withQueryString();
-            $totalExpense = 'Rp ' . number_format($expenses->sum('price'), 2, ',', '.');
+        });
 
-        return view('expenses.index', compact('expenses', 'categories', 'totalExpense'));
-    }
+        $totalExpense = 'Rp ' . number_format($expensesFilter->sum('price'), 2, ',', '.');
+
+    $expenses = $expensesFilter
+        ->orderBy($sortBy, $sortOrder)
+        ->paginate(10)
+        ->withQueryString();
+
+    return view('expenses.index', compact('expenses', 'categories', 'totalExpense'));
+}
     public function create(expense $expense, Categories $categories)
     {
 
