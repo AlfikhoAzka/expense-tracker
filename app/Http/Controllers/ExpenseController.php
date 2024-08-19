@@ -54,8 +54,13 @@ class ExpenseController extends Controller
             'name' => 'required|string|max:255',
             'category_id' => 'nullable',
             'price' => 'required|numeric',
+            'file' => 'image|nullable|mimes:jpg,jpeg,png|max:2048',
         ]);
-        $expense = Expense::create(request()->all());
+        if ($request->hasFile('file')) {
+            $request->file('file')->store('public');
+        }
+
+        Expense::create(request()->all());
 
         return redirect()->route('expenses.index')->with('success', 'Expense created successfully.');
     }
