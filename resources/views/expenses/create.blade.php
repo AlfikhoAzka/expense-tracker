@@ -31,9 +31,9 @@
                                 <x-text-input id="price" name="price" type="text" class="size-10 mt-1 block w-full" required autocomplete="price"/>
                                 <x-input-error class="mt-2" :messages="$errors->get('price')" />
 
-                                <x-input-label for="image" :value="__('Add Image')" class="mt-3" />
-                                <x-text-input id="image" name="image" type="file" class=" size-10 mt-1 block w-full p-1.5 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" />
-                                <x-input-error class="mt-2" :messages="$errors->get('price')" />
+                                <x-input-label for="file" :value="__('Add Image')" class="mt-3" />
+                                <x-text-input id="file" name="file" type="file" class=" size-10 mt-1 block w-full p-1.5 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" />
+                                <x-input-error class="mt-2" :messages="$errors->get('file')" />
                             </div>
 
                             <div class="flex justify-between items-center mt-4">
