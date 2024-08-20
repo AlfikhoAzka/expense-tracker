@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Expense;
 use App\Models\Categories;
+use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
 {
@@ -54,10 +54,10 @@ class ExpenseController extends Controller
             'name' => 'required|string|max:255',
             'category_id' => 'nullable',
             'price' => 'required|numeric',
-            'file' => 'image|nullable|mimes:jpg,jpeg,png|max:2048',
+            'image' => 'image|nullable|mimes:jpg,jpeg,png|max:2048',
         ]);
-        if ($request->hasFile('file')) {
-            $request->file('file')->store('public');
+        if ($request->hasFile('image')) {
+            $expense = $request->file('image')->store('image');
         }
 
         Expense::create(request()->all());
