@@ -8,7 +8,7 @@
     <div class="py-12 bg-gradient-to-r from-indigo-600 to-pink-500">
         <div class="py-0 max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-x-auto shadow-md sm:rounded-lg mb-4">
-                <form method="POST" action="{{ route('expenses.update', $expense->id) }}">
+                <form method="POST" action="{{ route('expenses.update', $expense->id) }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
 
@@ -34,6 +34,12 @@
                                 <x-text-input id="price" name="price" type="text" class="mt-1 block w-full"
                                     value="{{ $expense->price }}" required autocomplete="price" />
                                 <x-input-error class="mt-2" :messages="$errors->get('price')" />
+
+                                <x-input-label for="image" :value="__('Add Image')" />
+                                <img src="{{ asset('storage/'.$expense->image) }}" width="75">
+                                <x-text-input name="image" type="file" class=" size-10 mt-1 block w-full p-1.5 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
+                                    value="{{ $expense->image }}" />
+                                <x-input-error class="mt-2" :messages="$errors->get('name')" />
                             </div>
 
                             <div class="flex justify-between items-center mt-4">
