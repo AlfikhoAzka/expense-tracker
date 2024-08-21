@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Expense;
-use App\Models\Categories;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -17,7 +17,7 @@ class ExpenseController extends Controller
     $end_date = $request->input('end_date');
     $sortBy = $request->query('sort_by', 'created_at');
     $sortOrder = $request->query('sort_order', 'desc');
-    $categories = Categories::all();
+    $categories = Category::all();
 
     $expensesFilter = Expense::with('category')
         ->search($search)
@@ -43,10 +43,10 @@ class ExpenseController extends Controller
 
     return view('expenses.index', compact('expenses', 'categories', 'totalExpense'));
 }
-    public function create(expense $expense, Categories $categories)
+    public function create(expense $expense, Category $categories)
     {
 
-        $categories = Categories::all();
+        $categories = Category::all();
         return view('expenses.create', compact('expense', 'categories'));
     }
     public function store(Request $request)
@@ -70,9 +70,9 @@ class ExpenseController extends Controller
     return redirect()->route('expenses.index')->with('success', 'Expense created successfully.');
 }
 
-    public function edit(Expense $expense, Categories $categories)
+    public function edit(Expense $expense, Category $categories)
     {
-        $categories = Categories::all();
+        $categories = Category::all();
         return view('expenses.edit', compact('expense', 'categories'));
     }
     public function update(Request $request, Expense $expense)
