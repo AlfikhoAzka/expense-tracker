@@ -13,6 +13,7 @@ class Expense extends Model
         'name',
         'category_id',
         'price',
+        'image',
     ];
 
     public function scopeSearch($query, $search)
