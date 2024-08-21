@@ -32,19 +32,19 @@ class CategoryController extends Controller
     {
         return view('categories.edit', compact('category'));
     }
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Category $categories)
     {
         $request->validate([
-            'category' => 'required|string|max:255',
+            'categories' => 'required|string|max:255',
         ]);
-        $category->update($request->all());
+        $categories->update($request->all());
 
-        return redirect()->route('Category.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('category.index')->with('success', 'Category updated successfully.');
     }
 
-    public function destroy(Category $category)
+    public function destroy(Category $categories)
     {
-        $category->delete();
-        return redirect()->route('Category.index')->with('success', 'Category deleted successfully.');
+        $categories->delete();
+        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
 }
