@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Expense;
 use App\Models\Categories;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ExpenseController extends Controller
 {
@@ -49,21 +50,25 @@ class ExpenseController extends Controller
         return view('expenses.create', compact('expense', 'categories'));
     }
     public function store(Request $request)
-    {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'category_id' => 'nullable',
-            'price' => 'required|numeric',
-            'image' => 'image|nullable|mimes:jpg,jpeg,png|max:2048',
-        ]);
-        if ($request->hasFile('image')) {
-            $expense = $request->file('image')->store('image');
-        }
+{
+    $validatedData = $request->validate([
+        'name' => 'required|string|max:255',
+        'category_id' => 'nullable',
+        'price' => 'required|numeric',
+        'image' => 'image|nullable|mimes:jpg,jpeg,png|max:2048',
+    ]);
 
-        Expense::create(request()->all());
-
-        return redirect()->route('expenses.index')->with('success', 'Expense created successfully.');
+    if ($request->hasFile('image')) {
+        $filePath = $request->file('image')->store('images', 'public');
+        $validatedData['image'] = $filePath;
+    } else {
+        $validatedData['image'] = null;
     }
+
+    Expense::create($validatedData);
+
+    return redirect()->route('expenses.index')->with('success', 'Expense created successfully.');
+}
 
     public function edit(Expense $expense, Categories $categories)
     {
@@ -76,8 +81,17 @@ class ExpenseController extends Controller
             'name' => 'required|string|max:255',
             'category_id' => 'nullable',
             'price' => 'required|numeric',
+            'image' => 'image|nullable|mimes:jpg,jpeg,png|max:2048',
         ]);
-        $expense->update($request->all());
+
+        if ($request->hasFile('image')) {
+            $filePath = $request->file('image')->store('images', 'public');
+            $validatedData['image'] = $filePath;
+        } else {
+            $validatedData['image'] = null;
+        }
+
+        $expense->update($validatedData);
 
         return redirect()->route('expenses.index')->with('success', 'Expense updated successfully.');
     }
