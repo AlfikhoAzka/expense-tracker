@@ -13,9 +13,9 @@ class CategoryController extends Controller
         return view('categories.index', compact('categories'));
     }
 
-    public function create(Category $categories)
+    public function create(Category $category)
     {
-        return view('categories.create', compact('categories'));
+        return view('categories.create', compact('category'));
     }
 
     public function store(Request $request)
@@ -32,19 +32,19 @@ class CategoryController extends Controller
     {
         return view('categories.edit', compact('category'));
     }
-    public function update(Request $request, Category $categories)
+    public function update(Request $request, Category $category)
     {
         $request->validate([
-            'categories' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
         ]);
-        $categories->update($request->all());
+        $category->update($request->all());
 
-        return redirect()->route('category.index')->with('success', 'Category updated successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
     }
 
-    public function destroy(Category $categories)
+    public function destroy(Category $category)
     {
-        $categories->delete();
+        $category->delete();
         return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
 }
