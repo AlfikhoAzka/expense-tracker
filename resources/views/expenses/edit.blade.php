@@ -20,12 +20,16 @@
                                     value="{{ $expense->name }}" required autocomplete="name" />
                                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
 
-                                <x-input-label for="categories" :value="__('Choose Category')" />
-                                <select id="categories" name="category_id"
+                                <x-input-label for="category" :value="__('Choose Category')" />
+                                <select id="category" name="category_id"
                                     class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
                                     required autocomplete="selection">
-                                    @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->category }}</option>
+                                    <option value="" disabled selected>Choose Category</option>
+                                    @foreach ($category as $category)
+                                    <option value="{{ $category->id }}" {{ $expense->category_id == $category->id ?
+                                        'selected' : '' }}>
+                                        {{ $category->category }}
+                                    </option>
                                     @endforeach
                                 </select>
                                 <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
@@ -37,7 +41,8 @@
 
                                 <x-input-label for="image" :value="__('Add Image')" />
                                 <img src="{{ asset('storage/'.$expense->image) }}" width="75">
-                                <x-text-input name="image" type="file" class=" size-10 mt-1 block w-full p-1.5 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
+                                <x-text-input name="image" type="file"
+                                    class=" size-10 mt-1 block w-full p-1.5 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
                                     value="{{ $expense->image }}" />
                                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
                             </div>
