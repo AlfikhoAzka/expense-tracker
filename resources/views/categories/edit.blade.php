@@ -16,7 +16,7 @@
                         <div class="grid grid-cols-1">
                             <div>
                                 <x-input-label for="category" :value="__('Name')" />
-                                <x-text-input id="category" name="category" type="text" class=" mt-1 block w-full" value="{{ $category->category }}" required autocomplete="name"/>
+                                <x-text-input id="category" name="category" type="text" class=" mt-1 block w-full" value="{{ $category->category }}" required autocomplete="name" :value="old('category')"/>
                                 <x-input-error class="mt-2" :messages="$errors->get('category')" />
                             </div>
 
