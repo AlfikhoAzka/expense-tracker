@@ -16,18 +16,15 @@
                         <div class="grid grid-cols-1">
                             <div>
                                 <x-input-label for="name" :value="__('Name')" />
-                                <x-text-input id="name" name="name" type="text" class=" mt-1 block w-full"
-                                    value="{{ $expense->name }}" required autocomplete="name" />
+                                <x-text-input id="name" name="name" type="text" class=" mt-1 block w-full" value="{{ $expense->name }}" required autocomplete="name" :value="old('name')"/>
                                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
 
                                 <x-input-label for="category" :value="__('Choose Category')" />
                                 <select id="category" name="category_id"
-                                    class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
-                                    required autocomplete="selection">
+                                    class="mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm" required autocomplete="selection" :value="old('category_id')">
                                     <option value="" disabled selected>Choose Category</option>
                                     @foreach ($category as $category)
-                                    <option value="{{ $category->id }}" {{ $expense->category_id == $category->id ?
-                                        'selected' : '' }}>
+                                    <option value="{{ $category->id }}" {{ $expense->category_id == $category->id ? 'selected' : '' }}>
                                         {{ $category->category }}
                                     </option>
                                     @endforeach
@@ -35,8 +32,7 @@
                                 <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
 
                                 <x-input-label for="price" :value="__('Price')" />
-                                <x-text-input id="price" name="price" type="text" class="mt-1 block w-full"
-                                    value="{{ $expense->price }}" required autocomplete="price" />
+                                <x-text-input id="price" name="price" type="text" class="mt-1 block w-full" value="{{ $expense->price }}" required autocomplete="price" />
                                 <x-input-error class="mt-2" :messages="$errors->get('price')" />
 
                                 <x-input-label for="image" :value="__('Add Image')" />
