@@ -40,7 +40,9 @@
                                 <x-input-error class="mt-2" :messages="$errors->get('price')" />
 
                                 <x-input-label for="image" :value="__('Add Image')" />
-                                <img src="{{ asset('storage/'.$expense->image) }}" width="75">
+                                @if($expense->image)
+                                    <img src="{{ asset('storage/' . $expense->image) }}" alt="Image" class="w-10 h-10 object-cover inline-block mr-2">
+                                @endif
                                 <x-text-input name="image" type="file"
                                     class=" size-10 mt-1 block w-full p-1.5 border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm"
                                     value="{{ $expense->image }}" />
