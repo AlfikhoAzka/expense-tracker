@@ -40,6 +40,11 @@ class Expense extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function paymentType()
+    {
+    return $this->belongsTo(PaymentType::class);
+    }
+
     protected $casts = [
         'price' => 'decimal:0',
     ];

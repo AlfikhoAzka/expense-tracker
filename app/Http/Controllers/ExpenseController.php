@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Expense;
 use App\Models\Category;
+use App\Models\PaymentType;
 use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
@@ -46,7 +47,8 @@ class ExpenseController extends Controller
     {
 
         $categories = Category::all();
-        return view('expenses.create', compact('expense', 'categories'));
+        $paymentTypes = PaymentType::all();
+        return view('expenses.create', compact('expense', 'categories', 'paymentTypes'));
     }
     public function store(Request $request)
     {
