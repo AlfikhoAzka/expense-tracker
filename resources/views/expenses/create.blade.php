@@ -31,7 +31,7 @@
                                 <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
 
                                 <x-input-label for="price" :value="__('Price')" class="mt-3" />
-                                <x-text-input id="price" name="price" type="text" class="size-10 mt-1 block w-full" required autocomplete="price" :value="old('price')" />
+                                <x-text-input id="price" name="price" type="number" step="0.01" class="size-10 mt-1 block w-full" required autocomplete="price" :value="old('price')" />
                                 <x-input-error class="mt-2" :messages="$errors->get('price')" />
 
                                 <x-input-label for="image" :value="__('Add Image')" class="mt-3" />
