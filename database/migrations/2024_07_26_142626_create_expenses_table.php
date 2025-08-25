@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('category_id')->nullable();
+            $table->foreignId('payment_type_id')->constrained()->onDelete('cascade');
             $table->decimal('price', 12, 3);
             $table->timestamps();
         });
