@@ -9,9 +9,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Expense extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
         'category_id',
+        'payment_type',
         'price',
         'image',
     ];
@@ -23,8 +25,7 @@ class Expense extends Model
         }
 
         return $query->where(function ($query) use ($search) {
-            $query
-                ->where('name', 'LIKE', "%$search%");
+            $query->where('name', 'LIKE', "%$search%");
         });
     }
 
@@ -41,10 +42,11 @@ class Expense extends Model
     }
 
     public const PAYMENT_TYPES = [
-        'cash' => 'Cash',
-        'debit' => 'Debit Card',
-        'credit' => 'Credit Card',
-        'ewallet' => 'E-Wallet',
+        'Cash'     => 'Cash',
+        'Transfer' => 'Transfer',
+        'Debit'    => 'Debit',
+        'Credit'   => 'Credit',
+        'E-Wallet'  => 'E-Wallet',
     ];
 
     protected $casts = [

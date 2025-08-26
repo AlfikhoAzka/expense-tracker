@@ -125,6 +125,24 @@
                             </th>
                             <th scope="col" class="px-6 py-3 w-2/4">
                                 <a
+                                    href="{{ route('expenses.index', ['sort_by' => 'paymentTypes', 'sort_order' => request('sort_order') === 'asc' ? 'desc' : 'asc']) }}">
+                                    <div class="flex items-center">
+                                        Payment Type
+                                        @if (request('sort_by') === 'paymentTypes' && request('sort_order') === 'asc')
+                                        @elseif (request('sort_by') === 'paymentTypes' && request('sort_order') === 'desc')
+                                        @else
+                                        @endif
+                                        <svg class="w-4 h-4 ms-1 ml-1" aria-hidden="true"
+                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none"
+                                            viewBox="0 0 24 24">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                stroke-width="2" d="m8 15 4 4 4-4m0-6-4-4-4 4" />
+                                        </svg>
+                                    </div>
+                                </a>
+                            </th>
+                            <th scope="col" class="px-6 py-3 w-2/4">
+                                <a
                                     href="{{ route('expenses.index', ['sort_by' => 'price', 'sort_order' => request('sort_order') === 'asc' ? 'desc' : 'asc']) }}">
                                     <div class="flex items-center">
                                         Price
@@ -166,41 +184,41 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($expenses as $expense)
-                        <tr class="bbg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                            <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                @if($expense->image)
-                                    <img src="{{ asset('storage/' . $expense->image) }}" alt="Image" class="w-10 h-10 object-cover inline-block mr-2">
-                                @endif
-                                {{ $expense->name }}
-                            </td>
-                            <td scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{$expense->category->category ?? '-'}}
-                            </td>
-                            <td scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{$expense->price_formatted}}
-                            </td>
-                            <td scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{$expense->created_at}}
-                            </td>
-                            <td class="px-6">
-                                <div class="flex space-x-2">
-                                    <a href="{{ route('expenses.edit', $expense->id ) }}"
-                                        class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Edit</a>
-                                    <form action="{{ route('expenses.destroy', $expense->id ) }} " method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" onclick="return confirm('Are you sure?')"
-                                            class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Delete</button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
+                    @foreach ($expenses as $expense)
+                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            @if($expense->image)
+                                <img src="{{ asset('storage/' . $expense->image) }}" alt="Image" class="w-10 h-10 object-cover inline-block mr-2">
+                            @endif
+                            {{ $expense->name }}
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ $expense->category->category ?? '-' }}
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ $expense->payment_type ?? '-' }}
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ $expense->price_formatted }}
+                        </td>
+                        <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ $expense->created_at }}
+                        </td>
+                        <td class="px-6">
+                            <div class="flex space-x-2">
+                                <a href="{{ route('expenses.edit', $expense->id ) }}"
+                                    class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Edit</a>
+                                <form action="{{ route('expenses.destroy', $expense->id ) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" onclick="return confirm('Are you sure?')"
+                                        class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Delete</button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
                 </table>
             </div>
             {{ $expenses->links() }}

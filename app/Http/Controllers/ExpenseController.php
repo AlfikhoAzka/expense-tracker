@@ -55,7 +55,7 @@ class ExpenseController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'category_id' => 'nullable',
-            'payment_type_id' => 'nullable|string',
+            'payment_type' => 'required|string',
             'price' => 'required|numeric',
             'image' => 'image|nullable|mimes:jpg,jpeg,png|max:2048',
         ]);
