@@ -31,18 +31,18 @@
                                 <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
 
                                 <x-input-label for="payment_type" :value="__('Payment Type')" class="mt-3" />
-                                    <select id="payment_type" name="payment_type"
-                                        class="size-10 mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300
-                                            focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600
-                                            rounded-md shadow-sm">
-                                        <option value="">Choose Payment Type</option>
-                                        @foreach ($paymentTypes as $value => $label)
-                                            <option value="{{ $value }}" {{ old('payment_type') == $value ? 'selected' : '' }}>
-                                                {{ $label }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                    <x-input-error class="mt-2" :messages="$errors->get('payment_type')" />
+                                <select id="payment_type" name="payment_type"
+                                    class="size-10 mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300
+                                        focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600
+                                        rounded-md shadow-sm">
+                                    <option value="">Choose Payment Type</option>
+                                    @foreach ($paymentTypes as $value => $label)
+                                        <option value="{{ $value }}" {{ old('payment_type') == $value ? 'selected' : '' }}>
+                                            {{ $label }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <x-input-error class="mt-2" :messages="$errors->get('payment_type')" />
 
                                 <x-input-label for="price" :value="__('Price')" class="mt-3" />
                                 <x-text-input id="price" name="price" type="number" step="0.01" class="size-10 mt-1 block w-full" required autocomplete="price" :value="old('price')" />

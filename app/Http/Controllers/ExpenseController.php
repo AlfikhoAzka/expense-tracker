@@ -46,11 +46,7 @@ class ExpenseController extends Controller
     public function create(Expense $expense, Category $categories)
     {
     $categories = Category::all();
-    $paymentTypes = [
-        'cash' => 'Cash',
-        'credit_card' => 'Credit Card',
-        'bank_transfer' => 'Bank Transfer',
-    ];
+    $paymentTypes = Expense::PAYMENT_TYPES;
 
     return view('expenses.create', compact('expense', 'categories', 'paymentTypes'));
     }
