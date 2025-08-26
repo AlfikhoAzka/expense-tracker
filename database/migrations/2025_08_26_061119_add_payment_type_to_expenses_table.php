@@ -9,12 +9,10 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('payment_types', function (Blueprint $table) {
-            $table->id();
-            $table->string('payment_type')->unique();
-            $table->timestamps();
+        Schema::table('expenses', function (Blueprint $table) {
+            $table->string('payment_type')->nullable();
         });
     }
 
@@ -23,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('payment_types');
+        Schema::table('expenses', function (Blueprint $table) {
+            //
+        });
     }
 };

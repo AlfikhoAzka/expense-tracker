@@ -40,10 +40,12 @@ class Expense extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function paymentType()
-    {
-    return $this->belongsTo(PaymentType::class);
-    }
+    public const PAYMENT_TYPES = [
+        'cash' => 'Cash',
+        'debit' => 'Debit Card',
+        'credit' => 'Credit Card',
+        'ewallet' => 'E-Wallet',
+    ];
 
     protected $casts = [
         'price' => 'decimal:0',

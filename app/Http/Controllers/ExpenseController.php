@@ -43,18 +43,23 @@ class ExpenseController extends Controller
 
         return view('expenses.index', compact('expenses', 'category', 'totalExpense'));
     }
-    public function create(expense $expense, Category $categories)
+    public function create(Expense $expense, Category $categories)
     {
+    $categories = Category::all();
+    $paymentTypes = [
+        'cash' => 'Cash',
+        'credit_card' => 'Credit Card',
+        'bank_transfer' => 'Bank Transfer',
+    ];
 
-        $categories = Category::all();
-        $paymentTypes = PaymentType::all();
-        return view('expenses.create', compact('expense', 'categories', 'paymentTypes'));
+    return view('expenses.create', compact('expense', 'categories', 'paymentTypes'));
     }
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'category_id' => 'nullable',
+            'payment_type_id' => 'nullable|string',
             'price' => 'required|numeric',
             'image' => 'image|nullable|mimes:jpg,jpeg,png|max:2048',
         ]);
