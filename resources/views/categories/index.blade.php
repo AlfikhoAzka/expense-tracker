@@ -3,8 +3,6 @@
         <a href="categories/create"
             class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Add
             Category</a>
-        <a href="categories/create-payment"
-            class="bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl text-white shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-bold py-2 px-4 rounded">Add Payment Type</a>
     </div>
     
     <div class="py-12 bg-gradient-to-r from-indigo-600 to-pink-500">
