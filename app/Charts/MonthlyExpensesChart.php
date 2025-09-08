@@ -37,6 +37,7 @@ class MonthlyExpensesChart
             ->setSubtitle('Total expenses per month')
             ->addData('Total Expenses', $totals)
             ->setXAxis($months)
+            ->setColors(['#3949AB'])
             ->setFontColor('#fff');
     }
 }
