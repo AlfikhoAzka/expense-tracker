@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Expense;
 use App\Models\Category;
-use App\Models\PaymentType;
 use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
@@ -75,13 +74,15 @@ class ExpenseController extends Controller
     public function edit(Expense $expense, Category $category)
     {
         $category = Category::all();
-        return view('expenses.edit', compact('expense', 'category'));
+        $paymentTypes = Expense::PAYMENT_TYPES;
+        return view('expenses.edit', compact('expense', 'category', 'paymentTypes'));
     }
     public function update(Request $request, Expense $expense)
     {
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'category_id' => 'nullable',
+            'payment_type' => 'required|string',
             'price' => 'required|numeric',
             'image' => 'image|nullable|mimes:jpg,jpeg,png|max:2048',
         ]);

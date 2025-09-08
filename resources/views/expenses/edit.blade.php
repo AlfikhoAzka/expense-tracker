@@ -16,7 +16,7 @@
                         <div class="grid grid-cols-1">
                             <div>
                                 <x-input-label for="name" :value="__('Name')" />
-                                <x-text-input id="name" name="name" type="text" class=" mt-1 block w-full" value="{{ $expense->name }}" required autocomplete="name" :value="old('name')"/>
+                                <x-text-input id="name" name="name" type="text" class=" mt-1 block w-full" value="{{ $expense->name }}" required autocomplete="name"/>
                                 <x-input-error class="mt-2" :messages="$errors->get('name')" />
 
                                 <x-input-label for="category" :value="__('Choose Category')" />
@@ -30,6 +30,20 @@
                                     @endforeach
                                 </select>
                                 <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
+
+                                <x-input-label for="payment_type" :value="__('Payment Type')" class="mt-3" />
+                                <select id="payment_type" name="payment_type"
+                                    class="size-10 mt-1 block w-full border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300
+                                        focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600
+                                        rounded-md shadow-sm">
+                                    <option value="" disabled selected>Choose Payment Type</option>
+                                    @foreach ($paymentTypes as $value => $label)
+                                        <option value="{{ $value }}" {{ old('payment_type', $expense->payment_type) == $value ? 'selected' : '' }}>
+                                            {{ $label }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <x-input-error class="mt-2" :messages="$errors->get('payment_type')" />
 
                                 <x-input-label for="price" :value="__('Price')" />
                                 <x-text-input id="price" name="price" type="text" class="mt-1 block w-full" value="{{ $expense->price }}" required autocomplete="price" />
