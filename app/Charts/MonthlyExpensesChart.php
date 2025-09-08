@@ -3,6 +3,8 @@
 namespace App\Charts;
 
 use ArielMejiaDev\LarapexCharts\LarapexChart;
+use App\Models\Expense;
+use Carbon\Carbon;
 
 class MonthlyExpensesChart
 {
@@ -15,12 +17,26 @@ class MonthlyExpensesChart
 
     public function build(): \ArielMejiaDev\LarapexCharts\LineChart
     {
+        $year = date('Y');
+        $currentMonth = date('m');
+
+        $months = [];
+        $totals = [];
+
+        for ($i = 1; $i <= $currentMonth; $i++) {
+            $total = Expense::whereYear('created_at', $year)
+                ->whereMonth('created_at', $i)
+                ->sum('price');
+
+            $months[] = Carbon::create()->month($i)->format('F');
+            $totals[] = $total;
+        }
+
         return $this->chart->lineChart()
-            ->setTitle('Sales during 2021.')
-            ->setSubtitle('Physical sales vs Digital sales.')
-            ->addData('Physical sales', [40, 93, 35, 42, 18, 82])
-            ->addData('Digital sales', [70, 29, 77, 28, 55, 45])
-            ->setXAxis(['January', 'February', 'March', 'April', 'May', 'June'])
+            ->setTitle('Monthly Expenses ' . $year)
+            ->setSubtitle('Total expenses per month')
+            ->addData('Total Expenses', $totals)
+            ->setXAxis($months)
             ->setFontColor('#fff');
     }
 }
